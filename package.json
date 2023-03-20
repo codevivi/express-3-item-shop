@@ -1,0 +1,22 @@
+{
+  "name": "shopping-bag",
+  "version": "1.0.0",
+  "description": "",
+  "private": "true",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon index.js --ignore orders.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "author": "Vilma",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-handlebars": "^7.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
+}
