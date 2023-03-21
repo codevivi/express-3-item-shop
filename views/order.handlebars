@@ -14,7 +14,7 @@
     <p>Mokėti: <small>{{item.price}} &euro;</small></p>
 
     <form action="/order" method="POST">
-      <input type="hidden" value={{item.id}} required name="soldItemId" class="form-control" id="soldItemId" />
+      <input type="hidden" value={{itemId}} required name="soldItemId" class="form-control" id="soldItemId" />
       <div class="mb-3 mt-3">
         <label for="name" class="form-label">Vardas</label>
         <input type="text" required name="name" class="form-control" id="name" minlength="1" maxlength="50" />

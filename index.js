@@ -1,8 +1,7 @@
 import express from "express";
 import { engine } from "express-handlebars";
-import { saveSoldItemById, saveOrder, getDbData } from "./src/db.js";
+import { saveOrder, getOrders, completeOrder } from "./src/db.js";
 import shopStock from "./src/stock.js";
-console.log(shopStock);
 const PORT = 5000;
 
 const app = express();
@@ -18,24 +17,19 @@ app.get("/", async (req, res) => {
 });
 
 app.get("/order/:id", (req, res) => {
-  console.log(req.params.id, "id id id ");
   let id = Number(req.params.id);
   let item = shopStock[id];
-  item.id = Number(id);
-  console.log(id, item, "blalkbjlal blj makaronai");
   let paid = req.query.paid ? true : false;
   let failure = req.query.failure ? true : false;
   let needPayment = paid ? false : true;
-  res.render("order", { item, needPayment, paid, failure });
+  res.render("order", { item, itemId: id, needPayment, paid, failure });
 });
 
 app.post("/order", async (req, res) => {
   let failure = "";
   let paid = "";
-  console.log;
   try {
     await saveOrder(req.body);
-    await saveSoldItemById(req.body.soldItemId);
     paid = true;
   } catch (e) {
     console.log(e);
@@ -43,6 +37,16 @@ app.post("/order", async (req, res) => {
   }
   console.log(req.body.soldItemId, "bla bla lb a");
   res.redirect(`/order/${req.body.soldItemId}/?paid=${paid}&failure=${failure}`);
+});
+
+app.get("/manager", async (req, res) => {
+  let orders = await getOrders();
+  res.render("manager", { orders });
+});
+
+app.get("/manager/send/order/:id", async (req, res) => {
+  completeOrder(req.params.id);
+  res.redirect("/manager");
 });
 
 app.listen(PORT, () => {

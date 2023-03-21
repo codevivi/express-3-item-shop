@@ -1,0 +1,32 @@
+<h1>Orders:</h1>
+<table class="table bg-light table-bordered mt-4">
+  <thead>
+    <tr>
+      <th scope="col">Užsakymo numeris</th>
+      <th scope="col">Užsakymo būsena</th>
+      <th scope="col">Prekė</th>
+      <th scope="col">Užsakovas</th>
+      <th scope="col">Užsakovo adresas</th>
+      <th scope="col">Pristatymo būdas</th>
+      <th scope="col">Sumokėta</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each orders}}
+      <tr>
+        <td>{{@key}}</td>
+        <td>{{status}}
+          {{#if isNotSent}}
+            <a href="/manager/send/order/{{@key}}" class="btn btn-success mx-2">Siųsti</a>
+          {{/if}}
+        </td>
+        <td>{{item.title}}</td>
+        <td>{{name}} {{surname}}</td>
+        <td>{{address}}</td>
+        <td>{{deliveryMethod}}</td>
+        <td> {{item.price}} &euro; {{paymentMethod}}</td>
+      </tr>
+    {{/each}}
+
+  </tbody>
+</table>
