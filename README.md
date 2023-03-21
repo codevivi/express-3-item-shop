@@ -1,14 +1,42 @@
-# prekiu krepselis
+# 🪧 Express 3 item shop
 
-1. Sukurkite prekių krepšelį kuriame atvaizduokite tris pasirinktas prekes.
-   Prie kiekvienos prekės sukurkite mygtuką "Pirkti" ant kurio paspaudus vartotojas būtų nukreipiamas į atsiskaitymo puslapį kuriame:
-   Įvestų savo vardą, pavardę, adresą, mokėjimo būdą (PayPal, Mastercard, Visa), pristatymo būdą (Atsiėmimas paštomate, Pristatymas į namus)
-   Išsaugokite užsakymo duomenis database.json faile ir po sėkmingo apsipirkimo informuokite vartotoją, jog prekės bus pristatytos per ateinančias 3 darbo dienas.
-   Išsaugotame faile išsaugokite pasirinktą prekę.
-   Pabaigus užduotį prie šios žinutės pridėkite Like.
+## 📋 About
 
-2. Antrasis etapas:
-   Sukurkite vadybininko puslapį kuriame atvaizduokite visus užsakymus.
-   Prie kiekvieno naujo užsakymo automatiškai priskirte statusą: "Ruošiamas".
-   Sukurkite funkcionalumą leidžiantį vadybininkui pakeisti užsakymų statusą į "Išsiųstas".
-   Pabaigus užduotį prie šios žinutės pridėkite Like.
+Learning node express routing with parameters.
+
+This is simple 3 item shop, buy 1 item at a time, save order info, display orders, and change order status.
+
+Database - json file;
+
+🎯 **Goals:**
+
+[link to task (lt)](./README-task-lt.md)
+
+### Task
+
+1. Create shopping cart with three chosen items. Show "Buy" button near every item. Click on the "Buy" button should redirect user to the payment page:
+
+   where user has to be able to enter/choose name, surname, payment type(Paypal, Mastercard, Visa), delivery method (home, parcel locker);
+   Save order details in database.json file.Inform user about successful order with message 'Your goods will be delivered in three days'.
+   Save sold item in already saved file.
+
+2. Create manager page, with all orders displayed.
+   Every new order should get status 'Preparing' by default.
+   Create functionality for a manager to change order status from 'preparing' to 'sent'.
+
+### 🏁 Getting started
+
+**Must have [Node.js](https://nodejs.org)** installed
+
+1. Clone the repo
+2. Go into project directory and Install NPM packages
+
+   ```sh
+   npm install
+   ```
+
+3. use application:
+
+   ```sh
+   npm start
+   ```

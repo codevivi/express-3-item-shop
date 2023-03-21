@@ -23,7 +23,7 @@ const getDbData = async function () {
   try {
     return JSON.parse(await readFile(DB, "utf-8"));
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     return { orders: [] }; //if file empty or not created
   }
 };
