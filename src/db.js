@@ -1,26 +1,29 @@
 import { writeFile, mkdir, readFile } from "node:fs/promises";
+import shopStock from "./stock.js";
 const DB_PATH = new URL("./../database/", import.meta.url).pathname;
-const DB_NAME = "orders.json";
+const DB_NAME = "database.json";
 const DB = DB_PATH + "/" + DB_NAME;
 
-export const saveData = async function save(data) {
-  data.date = new Date().toLocaleDateString();
-  let currentData = await getData();
-  currentData.push(data);
-  return await writeData(JSON.stringify(currentData));
+export const saveOrder = async function saveOrder(order) {
+  let dbData = await getDbData();
+  dbData.orders.push(order);
+  return await writeData(JSON.stringify(dbData));
 };
 
-export const getData = async function () {
+export const saveSoldItemById = async function saveSoldItem(id) {
+  let dbData = await getDbData();
+  dbData.soldItems.push(shopStock[id]);
+  return await writeData(JSON.stringify(dbData));
+};
+
+export const getDbData = async function () {
   try {
     return JSON.parse(await readFile(DB, "utf-8"));
   } catch (err) {
-    return []; //if file empty or not created
+    console.log(err);
+    return { orders: [], soldItems: [] }; //if file empty or not created
   }
 };
-// export const getPostByInd = async function (ind) {
-//   let all = await getData();
-//   return all[ind] ? all[ind] : false;
-// };
 
 async function writeData(data) {
   await mkdir(DB_PATH, { recursive: true });

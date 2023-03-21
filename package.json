@@ -1,12 +1,12 @@
 {
-  "name": "shopping-bag",
+  "name": "shopping-cart-learning-express",
   "version": "1.0.0",
   "description": "",
   "private": "true",
   "main": "index.js",
   "scripts": {
     "start": "node .",
-    "dev": "nodemon index.js --ignore orders.json",
+    "dev": "nodemon index.js --ignore database.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "type": "module",

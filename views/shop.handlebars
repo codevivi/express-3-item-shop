@@ -1,0 +1,22 @@
+<table class="table bg-light table-bordered mt-4">
+  <thead>
+    <tr>
+      <th scope="col">Prekės pavadinimas</th>
+      <th scope="col">Kaina</th>
+      <th scope="col">Kiekis</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each shopStock}}
+      <tr>
+        <td>{{title}}</td>
+        <td> {{price}} &euro;</td>
+        <td>1</td>
+        <td>
+          <a href="/order/{{@key}}" class="btn btn-success">Pirkti</a>
+        </td>
+      </tr>
+    {{/each}}
+
+  </tbody>
+</table>

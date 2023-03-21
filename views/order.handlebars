@@ -1,0 +1,48 @@
+<div class="my-3" style="max-width:600px">
+  {{#if failure}}
+    <p>Prekė: {{item.title}}</p>
+    <div class="alert alert-danger">Atsiprašome,užsakymo įvykdyti nepavyko.</div>
+  {{/if}}
+  {{#if paid}}
+    <h1 class="my-3">Apmokėta</h1>
+    <p>Nupirkta prekė: {{item.title}}</p>
+    <div class="alert alert-success">Prekės bus pristatytos per ateinančias 3 darbo dienas.</div>
+  {{/if}}
+  {{#if needPayment}}
+    <h1 class="my-3">Ampokėjimas</h1>
+    <p>Prekė: <bold>{{item.title}}</bold></p>
+    <p>Mokėti: <small>{{item.price}} &euro;</small></p>
+
+    <form action="/order" method="POST">
+      <input type="hidden" value={{item.id}} required name="soldItemId" class="form-control" id="soldItemId" />
+      <div class="mb-3 mt-3">
+        <label for="name" class="form-label">Vardas</label>
+        <input type="text" required name="name" class="form-control" id="name" minlength="1" maxlength="50" />
+      </div>
+      <div class="mb-3">
+        <label for="surname" class="form-label"> Pavardė</label>
+        <input type="text" required name="surname" class="form-control" id="surname" minlength="1" maxlength="100" />
+      </div>
+      <div class="mb-3">
+        <label for="address" class="form-label">Adresas</label>
+        <input type="text" required name="address" class="form-control" id="address" minlength="1" maxlength="200" />
+      </div>
+      <div class="mb-3">
+        <label for="paymentMethod" class="form-label"> Mokejimo būdas</label>
+        <select name="paymentMethod" id="paymentMethod">
+          <option value="paypal">PayPal</option>
+          <option value="mastercard">MasterCard</option>
+          <option value="visa">Visa</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="deliveryMethod" class="form-label"> Pristatymo būdas</label>
+        <select name="deliveryMethod" id="deliveryMethod">
+          <option value="į paštomatą">Atsiimsite paštomate</option>
+          <option value="į namus">Pristatymas į namus</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Apmokėti</button>
+    </form>
+  {{/if}}
+</div>
