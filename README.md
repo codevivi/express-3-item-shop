@@ -2,6 +2,8 @@
 
 ## 📋 About
 
+2023-03-20 workshop
+
 Learning node express routing with parameters.
 
 This is simple 3 item shop, buy 1 item at a time, save order info, display orders, and change order status.
