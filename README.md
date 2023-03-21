@@ -42,3 +42,5 @@ Database - json file;
    ```sh
    npm start
    ```
+
+![gif screenshot](./img/gifukas.gif)
