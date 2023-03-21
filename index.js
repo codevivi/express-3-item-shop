@@ -35,7 +35,6 @@ app.post("/order", async (req, res) => {
     console.log(e);
     failure = true;
   }
-  console.log(req.body.soldItemId, "bla bla lb a");
   res.redirect(`/order/${req.body.soldItemId}/?paid=${paid}&failure=${failure}`);
 });
 
