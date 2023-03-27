@@ -5,7 +5,7 @@
   "private": "true",
   "main": "index.js",
   "scripts": {
-    "start": "node .",
+    "start": "node . --ignore database.json",
     "dev": "nodemon index.js --ignore database.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
